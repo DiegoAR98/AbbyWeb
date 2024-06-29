@@ -1,0 +1,75 @@
+# Build Folders (The compilation output)
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono auto generated files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code
+.vscode/
+.vscode/*
+
+# Rider
+.idea/
+
+# ASP.NET Scaffolding
+.scaffolding
+
+# Dotnet Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# StyleCop
+stylecop.json
+
+# Optional yarn cache folder
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.pnp.*
+
+# Optional eslint cache
+.eslintcache
+
+# NuGet Packages
+*.nupkg
+
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Logs
+*.log
+
+# npm
+node_modules/
+npm-debug.log
+yarn-error.log
