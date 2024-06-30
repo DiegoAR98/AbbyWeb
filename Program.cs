@@ -81,3 +81,4 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+"// force a new build" 
