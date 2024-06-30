@@ -60,7 +60,7 @@ else
 }
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString));
+    options.UseNpgsql(connectionString)); // Ensure this line ends with a semicolon
 
 var app = builder.Build();
 
@@ -81,4 +81,3 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
-"// force a new build" 
