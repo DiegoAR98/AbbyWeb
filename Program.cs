@@ -18,10 +18,9 @@ builder.Services.AddRazorPages();
 // Configure the database connection
 string connectionString;
 
-if (builder.Environment.IsDevelopment())
+var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+if (!string.IsNullOrEmpty(databaseUrl))
 {
-    // Use local connection string from .env
-    var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
     var databaseUri = new Uri(databaseUrl);
     var userInfo = databaseUri.UserInfo.Split(':');
 
@@ -40,27 +39,11 @@ if (builder.Environment.IsDevelopment())
 }
 else
 {
-    // Use Heroku provided connection string
-    var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-    var databaseUri = new Uri(databaseUrl);
-    var userInfo = databaseUri.UserInfo.Split(':');
-
-    var npgsqlBuilder = new NpgsqlConnectionStringBuilder
-    {
-        Host = databaseUri.Host,
-        Port = databaseUri.Port,
-        Username = userInfo[0],
-        Password = userInfo[1],
-        Database = databaseUri.LocalPath.TrimStart('/'),
-        SslMode = SslMode.Require,
-        TrustServerCertificate = true
-    };
-
-    connectionString = npgsqlBuilder.ToString();
+    throw new InvalidOperationException("The environment variable DATABASE_URL is not set.");
 }
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString)); // Ensure this line ends with a semicolon
+    options.UseNpgsql(connectionString));
 
 var app = builder.Build();
 
